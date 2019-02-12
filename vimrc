@@ -109,6 +109,25 @@ set number 							" set line number
 " colorscheme pyte
 " colorscheme mayansmoke
 
+"filetype plugin indent on
+" To insert space characters whenever the tab key is pressed,
+set expandtab
+"how many space on single tab press 
+set tabstop=2
+"To change all the existing tab characters to match the current tab settings
+"retab
+"To change the number of space characters inserted for indentation (autoindent '=' follow this), sometimes you need to type manually and reload the file to take effect
+set shiftwidth=2
+"how many tab unit per tab press in insert mode
+" set softtabstop=2
+
+set hlsearch 						" hightlight  search
+set incsearch 						" hightlight per input , incremental search
+
+" set split behaviour
+set splitbelow "spawn new split below
+set splitright "spawn new split right
+
 
 "===================BUFFER MANAGEMENT MAPPINGS=================
 map <c-a-q> :q!<cr>
