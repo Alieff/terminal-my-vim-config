@@ -19,6 +19,9 @@
 " set title string, for vim-phobic people
 set titlestring=%{expand(\"%:p:t\")}%m\ (%{substitute(expand(\"%:p:h\"),'/home/pulpen','~','')})\ -\ Koding
 set shiftround	" round tab movement
+if !isdirectory($HOME . "/.vim-backups")
+    call mkdir($HOME . "/.vim-backups", "p", 0700)
+endif
 set directory=$HOME/.vim-backups/	" set swp files path
 let $TMP="$HOME/.temp"
 set nocompatible	" be improved required
