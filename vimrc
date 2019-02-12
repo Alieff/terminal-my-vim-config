@@ -90,7 +90,8 @@ set winminwidth=0
 
 " set white space as character
 "set listchars=tab:>·,trail:~,space:.
- set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:.
+set encoding=utf8
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:.
 set nolist
 " set list
 
