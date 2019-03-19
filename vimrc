@@ -76,6 +76,12 @@ set conceallevel=2
 set wildmenu
 set wildmode=longest,full
 
+" persistant undo
+" if has("persistent_undo")
+set undodir=~/.vim/undodir
+set undofile
+" endif
+
 "===================VISUALS=================
 
 "speed up syntax highlighting
