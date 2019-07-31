@@ -172,6 +172,20 @@ nnoremap <C-h> <C-w><C-h>
 nnoremap <leader><c-h> 10<c-w><c-h>
 nnoremap <C-l> <C-w><C-l>
 nnoremap <leader><c-l> 10<c-w><c-l>
+"===================FILE MANAGEMENT MAPPINGS=================
+" #### PLUGIN INDEPENDENT ############################################
+" save current file path to clipboard, alt+'
+nnoremap <a-'> :let @+=expand('%:p')<cr> :echo 'path copied'<cr>
+" open file whose path in clipboard 
+nmap <Leader>o  :execute 'edit' fnameescape(@+)<cr>
+
+
+" save , alt+s to save
+inoremap <a-s> <Esc>:w<Enter>a
+nnoremap <a-s> :w<Enter>
+inoremap <c-s> <Esc>:w<Enter>a
+nnoremap <c-s> :w<Enter>
+
 
 "===================MOVEMENT MAPPINGS=================
 
@@ -214,6 +228,7 @@ nnoremap \ @q
 vnoremap \ @q
 nnoremap \| @w
 vnoremap \| @w
+" auto copy into register / 
 vnoremap <c-\> "+y:let @q=@+<cr>:echo "clipboard setted to register q"<cr>
 vnoremap <c-\> "+y:let @q=@+<cr>:echo "clipboard setted to register q"<cr>
 nnoremap <c-\> 00v$h"+y:let @q=@+<cr>:echo "clipboard setted to register q"<cr>
@@ -238,10 +253,10 @@ nnoremap 00 0
 vnoremap # $h
 nnoremap # 00v$h
 " mapping escape
-inoremap <a-d> <esc>
-nnoremap <a-d> <esc>
-vnoremap <a-d> <esc>
-cnoremap <a-d> <c-c>
+inoremap <a-l> <esc>l
+nnoremap <a-l> <esc>
+vnoremap <a-l> <esc>
+cnoremap <a-l> <c-c>
 
 " mapping undo
 nnoremap <s-u> <c-r>
@@ -294,6 +309,7 @@ nnoremap <a-s-p> :cd %:p:h <bar> echo 'working dir setted to current path'<cr>
 " copy in visual mode
 vnoremap <c-c> "+y
 vnoremap <c-x> "+d
+nnoremap <c-x> V"+d
 " cut in visual mode
 vnoremap x "0d:let @x=@0<cr>
 nnoremap <s-x> "xx:let @0=@x<cr>
