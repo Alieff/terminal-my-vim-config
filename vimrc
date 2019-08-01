@@ -276,6 +276,15 @@ map k gk
 inoremap <c-right> <esc>ea
 
 "=================== OTHER MAPPINGS =================
+nnoremap <up> <up>zz
+nnoremap <right> <right>zz
+nnoremap <down> <down>zz
+nnoremap <left> <left>zz
+
+inoremap <up> <up>
+inoremap <right> <right>
+inoremap <down> <down>
+inoremap <left> <left>
 
 " increase/decrease split width
 nnoremap ) :vertical resize +5<cr>
@@ -384,4 +393,25 @@ inoremap <s-Backspace> <right><Esc>d0mz?\S<cr>lmx`zd`x:nohl<cr>i<del>
 " inoremap <s-cr> <c-o><s-o>
 inoremap <s-cr> <c-o>v<esc><c-o>o<c-o>gv<esc>
 
+" escape the search string
+function! EscapeForSearch()
+  let @y = substitute(@y, '\', "\\\\\\", 'g')
+  let @y = substitute(@y, '/', '\\/', 'g')
+  let @y = substitute(@y, "\n", '\\n', 'g')
+  let @y = substitute(@y, "\r", '\\r', 'g')
+  let @y = substitute(@y, '[', '\\[', 'g')
+  let @y = substitute(@y, ']', '\\]', 'g')
+  " let @y = substitute(@y, "(", '\\(', 'g')
+  " let @y = substitute(@y, ")", '\\)', 'g')
+  let @y = substitute(@y, '*', '\\*', 'g')
+  echom @y
+endfunction
+"# search the selected
+vnoremap <c-f> "yy:call EscapeForSearch()/<c-r>yN
+" search the word on cursor
+nnoremap <c-f> viwy/<c-r>0<cr>
+"# replace the selected, start from current to the last line(,$), 
+" then repeat the search from beginning line, to the last search position(1,''-&&) 
+vnoremap <c-h> y:,$s/<c-r>0/(REPLACE_HERE)/gc\|1,''-&&
+" https://stackoverflow.com/questions/7598133/vim-global-search-replace-starting-from-the-cursor-position
 
